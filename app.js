@@ -13,9 +13,9 @@ app.use('/',function(req,res){
 })
 
 if(!process.env.PORT){
-	PORT = process.env.PORT;
+	PORT = 3002;
 }else{
-	PORT = 3002
+	PORT = process.env.PORT
 }
 
 app.listen(PORT,function(){
