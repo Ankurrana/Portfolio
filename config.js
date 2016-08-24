@@ -1,7 +1,7 @@
 module.exports = (function(){
 	if(process.env.PLATFORM){
 		return {
-			PORT : proces.env.PORT
+			PORT : process.env.PORT
 		}
 	}else{
 		return {
