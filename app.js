@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var path = require('path');
-var config = require('./config.js')
+var config = require(path.resolve(__dirname,'./config.js'))
 
 // app.use('/public',express.static(__dirname + "/public"));
 app.set('view engine','jade')
