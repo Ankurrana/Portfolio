@@ -1,23 +1,24 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var config = require('./config.js')
 
 // app.use('/public',express.static(__dirname + "/public"));
-
-app.use('/resume',function(req,res){
+app.set('view engine','jade')
+app.set('views', __dirname + '/public');
+app.get('/resume',function(req,res){
 	res.download('./public/AnkurRanaCV.pdf','AnkurRana_CV.pdf')
 })
-
-app.use('/',function(req,res){
-	res.sendFile( path.join(__dirname,'/public/index.html'));
+app.use('/public',express.static(__dirname + "/public"));
+app.get('/',function(req,res){
+	res.render('index')
 })
 
-if(!process.env.PORT){
-	PORT = 3002;
-}else{
-	PORT = process.env.PORT
-}
+app.get('/data',function(req,res){
+	res.sendFile( path.resolve(__dirname ,'./data/ankur.json'));
+})
 
-app.listen(PORT,function(){
-	console.log('Started listening to Port ' + PORT );
+
+app.listen(config.PORT,function(){
+	console.log('Started listening to Port ' + config.PORT );
 });
